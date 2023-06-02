@@ -50,7 +50,7 @@
                     <?php if (mysqli_num_rows($stasiun) > 0): ?>
                         <?php foreach ($stasiun as $data): ?>
                             <tr>
-                                <td><?= $i++; ?></td>
+                                <td><?= $i++; ?>.</td>
                                 <td><?= $data['nama_stasiun']; ?></td>
                                 <td><?= $data['kota']; ?></td>
                                 <td>

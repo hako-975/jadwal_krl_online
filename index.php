@@ -6,7 +6,8 @@
     $jadwal = mysqli_query($koneksi, "SELECT jadwal.*, stasiun_asal.nama_stasiun AS stasiun_asal, stasiun_tujuan.nama_stasiun AS stasiun_tujuan
     FROM jadwal
     INNER JOIN stasiun AS stasiun_asal ON jadwal.id_stasiun_asal = stasiun_asal.id_stasiun
-    INNER JOIN stasiun AS stasiun_tujuan ON jadwal.id_stasiun_tujuan = stasiun_tujuan.id_stasiun");
+    INNER JOIN stasiun AS stasiun_tujuan ON jadwal.id_stasiun_tujuan = stasiun_tujuan.id_stasiun
+    ORDER BY jam_berangkat ASC");
 
     if (isset($_POST['btnCari'])) {
         $stasiun_asal = $_POST['stasiun_asal'];
@@ -24,6 +25,7 @@
         INNER JOIN stasiun AS stasiun_asal ON jadwal.id_stasiun_asal = stasiun_asal.id_stasiun
         INNER JOIN stasiun AS stasiun_tujuan ON jadwal.id_stasiun_tujuan = stasiun_tujuan.id_stasiun
         WHERE stasiun_asal.id_stasiun = '$stasiun_asal' AND stasiun_tujuan.id_stasiun = '$stasiun_tujuan'
+        ORDER BY jam_berangkat ASC
         ");
     }
 ?>
@@ -44,7 +46,7 @@
                     <div>
                         <label class="label" for="stasiun_asal">Stasiun Asal</label>
                         <select id="stasiun_asal" name="stasiun_asal" class="input">
-                            <option value="<?= (isset($_POST['btnCari']) ? $_POST['stasiun_asal'] : '0'); ?>"><?= (isset($_POST['btnCari']) ? $stasiun_asal_nama : '--- Stasiun Awal ---'); ?></option>
+                            <option value="<?= (isset($_POST['btnCari']) ? $_POST['stasiun_asal'] : '0'); ?>"><?= (isset($_POST['btnCari']) ? $stasiun_asal_nama : '--- Stasiun Asal ---'); ?></option>
                             <?php foreach ($stasiun as $data): ?>
                                 <option value="<?= $data['id_stasiun']; ?>"><?= $data['nama_stasiun']; ?></option>
                             <?php endforeach ?>
