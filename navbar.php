@@ -8,6 +8,7 @@
           <a class="button" href="profile.php">Profile</a>
           <a class="button" href="logout.php">Logout</a>
         <?php else: ?>
+          <a class="button" href="index.php">Home</a>
           <a class="button" href="login.php">Login</a>
         <?php endif ?>
       </div>

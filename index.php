@@ -67,6 +67,9 @@
                     <a href="index.php" class="button btn-cari">Reset</a>
                 </div>
             </form>
+            <div>
+                <h2>Jumlah Jadwal: <?= mysqli_num_rows($jadwal); ?></h2>
+            </div>
             <div class="table-responsive">
                 <table border="1" cellpadding="10" cellspacing="0">
                     <tr>
@@ -81,7 +84,7 @@
                     <?php if (mysqli_num_rows($jadwal) > 0): ?>
                         <?php foreach ($jadwal as $data): ?>
                             <tr>
-                                <td><?= $i++; ?></td>
+                                <td><?= $i++; ?>.</td>
                                 <td><?= $data['stasiun_asal']; ?></td>
                                 <td><?= $data['stasiun_tujuan']; ?></td>
                                 <td><?= substr($data['jam_berangkat'], 0, 5); ?></td>
